@@ -1,63 +1,41 @@
-
+/*
+* NOTE: This script was forked from [github.com/dvera123/bulb-project]. All credits belong only to the author.
+* autor/author		:	Diego Vera Jimenez
+* link to original code	:	github.com/dvera123/bulb-project
+* tradução/translate	:	Victor Ribeiro - github.com/JVRibeiro
+*/
 
 $(document).ready(function() {
 
 
 	if (annyang) {
 
-		var on = function() {
+		var ligar = function() {
 	      $.ajax({
 			  type: 'GET',	
-			  data: { do: "on"}
+			  data: { do: "ligar"}
 			}).done(function(content) {
 				$('body').addClass('night');
-				console.log("on");
+				console.log("ligar");
 			});
 	      
 	    };
 
-	    var off = function() {
+	    var desligar = function() {
 	      $.ajax({
 			  type: 'GET',	
-			  data: { do: "off"}
+			  data: { do: "desligar"}
 			}).done(function(content) {
 				$('body').removeClass('night');
-				console.log("off");
+				console.log("desligar");
 			});
 	      
 	    };
 
 		var commands = {
-	     'on': on,
-	     'off': off
+	     'ligar': ligar,
+	     'desligar': desligar
 	    };
 
 	    
-	    annyang.init(commands);
-	    annyang.start();
-	}	
-
-	$('body').on('click', function(){
-		if($(this).hasClass('night')){
-			$.ajax({
-			  type: 'GET',	
-			  data: { do: "off"}
-			}).done(function(content) {
-				$('body').removeClass('night');
-				console.log("off");
-			});
-		}
-
-		else{
-			$.ajax({
-			  type: 'GET',	
-			  data: { do: "on"}
-			}).done(function(content) {
-				$('body').addClass('night');
-				console.log("on");
-			});
-		}
-	});
-
-});
-
+	    annyan
